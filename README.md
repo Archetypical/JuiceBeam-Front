@@ -1,12 +1,4 @@
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 # JuiceBeam Front End
-=======
-# JuiceBeam-Front
->>>>>>> Stashed changes
-=======
-# JuiceBeam-Front
->>>>>>> Stashed changes
 
 Created With React Hooks + Redux - User Registration and Login Tutorial & Example
 
