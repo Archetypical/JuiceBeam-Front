@@ -8,25 +8,32 @@
     "license": "MIT",
     "scripts": {
         "build": "webpack --mode production",
-        "start": "webpack-dev-server --open"
+        "start": "CHOKIDAR_USEPOLLING=true webpack-dev-server --open"
     },
     "dependencies": {
         "history": "^4.10.1",
         "react": "^16.13.0",
         "react-dom": "^16.13.0",
+        "react-icons": "^4.3.1",
+        "react-modal": "^3.14.3",
         "react-redux": "^7.2.0",
         "react-router-dom": "^5.1.2",
+        "react-svg-loader": "^3.0.3",
+        "react-transition-group": "^4.4.2",
+        "react-tsparticles": "^1.37.3",
         "redux": "^4.0.5",
         "redux-logger": "^4.0.0",
         "redux-thunk": "^2.3.0"
     },
     "devDependencies": {
         "@babel/core": "^7.4.3",
+        "@babel/plugin-transform-runtime": "^7.16.4",
         "@babel/preset-env": "^7.4.3",
         "@babel/preset-react": "^7.0.0",
         "babel-loader": "^8.0.5",
         "html-webpack-plugin": "^3.2.0",
         "path": "^0.12.7",
+        "url-loader": "^4.1.1",
         "webpack": "^4.29.6",
         "webpack-cli": "^3.3.0",
         "webpack-dev-server": "^3.2.1"

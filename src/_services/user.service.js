@@ -7,6 +7,9 @@ export const userService = {
     register,
     getAll,
     getById,
+    getEvents,
+    runEvent,
+    checkBalance,
     update,
     delete: _delete
 };
@@ -23,7 +26,7 @@ function login(username, password) {
         .then(user => {
             // store user details and jwt token in local storage to keep user logged in between page refreshes
             localStorage.setItem('user', JSON.stringify(user));
-
+            //document.cookie = JSON.stringify(user);
             return user;
         });
 }
@@ -51,6 +54,40 @@ function getById(id) {
     return fetch(`${config.apiUrl}/users/${id}`, requestOptions).then(handleResponse);
 }
 
+
+function getEvents(user) {
+    const requestOptions = {
+        method: 'GET',
+        headers: authHeader()
+    };
+    return fetch(`${config.apiUrl}/events/${user}`, requestOptions).then(handleResponse).then(events => {
+        
+        return events;
+    });
+}
+
+function runEvent(username, eventname) {
+    const requestOptions = {
+        method: 'POST',
+        headers: { ...authHeader(), 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, eventname })
+    };
+    return fetch(`${config.apiUrl}/events/run`, requestOptions).then(handleResponse).then(status => {
+        return status;
+    });
+}
+
+function checkBalance(user, event) {
+    const requestOptions = {
+        method: 'GET',
+        headers: authHeader()
+    };
+    return fetch(`${config.apiUrl}/users/balance/${user}/${event}`, requestOptions).then(handleResponse).then(isEnough => {
+        
+        return isEnough;
+    });
+}
+
 function register(user) {
     const requestOptions = {
         method: 'POST',
@@ -67,8 +104,7 @@ function update(user) {
         headers: { ...authHeader(), 'Content-Type': 'application/json' },
         body: JSON.stringify(user)
     };
-
-    return fetch(`${config.apiUrl}/users/${user.id}`, requestOptions).then(handleResponse);;
+    return fetch(`${config.apiUrl}/users/${user.id}`, requestOptions).then(handleResponse);
 }
 
 // prefixed function name with underscore because delete is a reserved word in javascript
@@ -77,8 +113,7 @@ function _delete(id) {
         method: 'DELETE',
         headers: authHeader()
     };
-
-    return fetch(`${config.apiUrl}/users/${id}`, requestOptions).then(handleResponse);
+    return fetch(`${config.apiUrl}/users/${id}`, requestOptions).then(handleResponse);   
 }
 
 function handleResponse(response) {
@@ -87,10 +122,10 @@ function handleResponse(response) {
         if (!response.ok) {
             if (response.status === 401) {
                 // auto logout if 401 response returned from api
-                logout();
-                location.reload(true);
+                //logout();
+                //location.reload(true);
+                console.log("Error 401!");
             }
-
             const error = (data && data.message) || response.statusText;
             return Promise.reject(error);
         }

@@ -17,7 +17,7 @@ function LoginPage() {
 
     // reset login status
     useEffect(() => { 
-        dispatch(userActions.logout()); 
+        dispatch(userActions.logout());
     }, []);
 
     function handleChange(e) {
