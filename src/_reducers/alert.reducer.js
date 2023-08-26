@@ -1,5 +1,10 @@
 import { alertConstants } from '../_constants';
 
+const  initialState = {
+    type: '',
+    message: '',
+}
+
 export function alert(state = {}, action) {
     switch (action.type) {
         case alertConstants.SUCCESS:
@@ -13,7 +18,9 @@ export function alert(state = {}, action) {
                 message: action.message
             };
         case alertConstants.CLEAR:
-            return {};
+            return {
+
+            };
         default:
             return state
     }
