@@ -56,7 +56,7 @@ function StreamPage(settings) {
     setIsOpen(true);
   }
 
-  getChannel();
+  
   async function getChannel() {
     let channel = await userActions.reqSettings().then((settings) => {
       setStreamName(settings[1].twitchName);
@@ -97,6 +97,7 @@ function StreamPage(settings) {
     eventList = [0];
     let eventStatus = userActions.notifyListener();
     console.log(eventStatus);
+    getChannel();
     //Check if user is logged in
     if (localStorage.getItem("user")) {
       setLoggedIn(true);

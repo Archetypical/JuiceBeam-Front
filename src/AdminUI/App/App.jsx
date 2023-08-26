@@ -45,7 +45,7 @@ function App() {
 
   function redirect(){
     if(!verified){
-      //window.location.replace("http://localhost:8080")
+      window.location.replace("http://localhost:8080")
     }
   }
 

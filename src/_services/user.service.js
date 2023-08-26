@@ -218,7 +218,7 @@ function handleResponse(response) {
     if (!response.ok) {
       if (response.status === 401) {
         // auto logout if 401 Unauthorized response returned from api
-        logout();
+        //logout();
         //location.reload(true);
         console.log("Error 401!");
       }

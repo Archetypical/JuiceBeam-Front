@@ -53,12 +53,12 @@ function Homepage() {
 
   const onSubmit = () => {
     let newData = {
-        twitchClientID: twitchClientID,
-        twitchClientSecret: twitchSecret,
-        twitchName: twitchChannel,
-        youtubeApiKey: youtubeKey,
-        channelName: youtubeChannel,
-      };
+      twitchClientID: twitchClientID,
+      twitchClientSecret: twitchSecret,
+      twitchName: twitchChannel,
+      youtubeApiKey: youtubeKey,
+      channelName: youtubeChannel,
+    };
     if (checkIsValid(newData)) {
       adminActions.updateSettings({ ...newData });
     }
@@ -68,90 +68,92 @@ function Homepage() {
     <div className="admin-home fadeInLeft fast">
       <div className="admin-header">
         <h1>Hello {user.username}!</h1>
-        <Card>
-          <CardHeader>
-            <h4>Twitch API Settings</h4>
-          </CardHeader>
-          <CardBody>
-            <Form onSubmit={handleSubmit(onSubmit)}>
-              <div className="mr-5 col-md-4">
-                <Label for="search-invoice" className="form-Label">
-                  Twitch Client ID:
-                </Label>
-                <Input
-                  id="twId"
-                  className="ms-50 w-100"
-                  type="password"
-                  defaultValue={twitchClientID}
-                  onChange={(e) => setClientID(e.target.value)}
-                />
-              </div>
-              <div className="mr-5 col-md-4">
-                <Label for="search-invoice" className="form-Label">
-                  Twitch Client Secret:
-                </Label>
-                <Input
-                  id="twSec"
-                  className="ms-50 w-100"
-                  type="password"
-                  defaultValue={twitchSecret}
-                  onChange={(e) => setTwitchSecret(e.target.value)}
-                />
-              </div>
-              <div className="mr-5 col-md-4">
-                <Label for="search-invoice" className="form-Label">
-                  Twitch Channel:
-                </Label>
-                <Input
-                  id="twChannel"
-                  className="ms-50 w-100"
-                  type="text"
-                  defaultValue={twitchChannel}
-                  onChange={(e) => setTwitchChannel(e.target.value)}
-                />
-              </div>
-              <Button type="submit" className="b-list" color="primary">
-                Submit
-              </Button>
-            </Form>
-          </CardBody>
-        </Card>
-        <Card>
-          <CardHeader>
-            <h4>Youtube API Settings</h4>
-          </CardHeader>
-          <CardBody>
-            <Form onSubmit={handleSubmit(onSubmit)}>
-              <div className="mr-5 col-md-4">
-                <Label for="search-invoice" className="form-Label">
-                  Youtube API Key:
-                </Label>
-                <Input
-                  id="ytKey"
-                  className="ms-50 w-100"
-                  type="password"
-                  defaultValue={youtubeKey}
-                  onChange={(e) => setYoutubeKey(e.target.value)}
-                />
-              </div>
-              <div className="mr-5 col-md-4">
-                <Label for="search-invoice" className="form-Label">
-                  Youtube Channel:
-                </Label>
-                <Input
-                  id="ytChannel"
-                  className="ms-50 w-100"
-                  type="text"
-                  defaultValue={youtubeChannel}
-                  onChange={(e) => setYoutubeChannel(e.target.value)}
-                />
-              </div>
-              <Button type="submit" className="b-list" color="primary">
-                Submit
-              </Button>
-            </Form>
-          </CardBody>
-        </Card>
+        <div className="admin-home-cards">
+          <Card>
+            <CardHeader>
+              <h4>Twitch API Settings</h4>
+            </CardHeader>
+            <CardBody>
+              <Form onSubmit={handleSubmit(onSubmit)}>
+                <div className="mr-5 col-md-6">
+                  <Label for="search-invoice" className="form-Label">
+                    Twitch Client ID:
+                  </Label>
+                  <Input
+                    id="twId"
+                    className="ms-50 w-100"
+                    type="password"
+                    defaultValue={twitchClientID}
+                    onChange={(e) => setClientID(e.target.value)}
+                  />
+                </div>
+                <div className="mr-5 col-md-6">
+                  <Label for="search-invoice" className="form-Label">
+                    Twitch Client Secret:
+                  </Label>
+                  <Input
+                    id="twSec"
+                    className="ms-50 w-100"
+                    type="password"
+                    defaultValue={twitchSecret}
+                    onChange={(e) => setTwitchSecret(e.target.value)}
+                  />
+                </div>
+                <div className="mr-5 col-md-6">
+                  <Label for="search-invoice" className="form-Label">
+                    Twitch Channel:
+                  </Label>
+                  <Input
+                    id="twChannel"
+                    className="ms-50 w-100"
+                    type="text"
+                    defaultValue={twitchChannel}
+                    onChange={(e) => setTwitchChannel(e.target.value)}
+                  />
+                </div>
+                <Button type="submit" className="b-list" color="primary">
+                  Submit
+                </Button>
+              </Form>
+            </CardBody>
+          </Card>
+          <Card>
+            <CardHeader>
+              <h4>Youtube API Settings</h4>
+            </CardHeader>
+            <CardBody>
+              <Form onSubmit={handleSubmit(onSubmit)}>
+                <div className="mr-5 col-md-6">
+                  <Label for="search-invoice" className="form-Label">
+                    Youtube API Key:
+                  </Label>
+                  <Input
+                    id="ytKey"
+                    className="ms-50 w-100"
+                    type="password"
+                    defaultValue={youtubeKey}
+                    onChange={(e) => setYoutubeKey(e.target.value)}
+                  />
+                </div>
+                <div className="mr-5 col-md-6">
+                  <Label for="search-invoice" className="form-Label">
+                    Youtube Channel:
+                  </Label>
+                  <Input
+                    id="ytChannel"
+                    className="ms-50 w-100"
+                    type="text"
+                    defaultValue={youtubeChannel}
+                    onChange={(e) => setYoutubeChannel(e.target.value)}
+                  />
+                </div>
+                <Button type="submit" className="b-list" color="primary">
+                  Submit
+                </Button>
+              </Form>
+            </CardBody>
+          </Card>
+        </div>
       </div>
     </div>
   );
