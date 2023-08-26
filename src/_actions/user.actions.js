@@ -1,34 +1,49 @@
 import { userConstants } from "../_constants";
 import { userService } from "../_services";
 import { alertActions } from "./";
-import { history } from "../_helpers";
+import { history, store } from "../_helpers";
 import config from "config";
-import { startConfetti, stopConfetti } from "../event_anim";
+import socketIOClient from "socket.io-client";
+import {
+  startConfetti,
+  stopConfetti,
+  tickerText,
+  tickerReset,
+  setFire,
+} from "../UserUI/event_anim";
+import { getConfirmation } from "history/DOMUtils";
 
 export const userActions = {
   login,
+  twitchAuth,
+  twitchHandler,
   logout,
+  resetPassword,
   register,
   getEvents,
+  reqSettings,
+  getVideos,
   runEvent,
   checkBalance,
+  updateRank,
+  adminVerify,
+  userVerify,
+  updateLocalUser,
   notifyListener,
-  getAll,
-  delete: _delete,
 };
 
 function login(username, password, from, setLogin, setPopup) {
-  return (dispatch) => {
+  return async (dispatch) => {
     dispatch(request({ username }));
 
     userService.login(username, password).then(
-      (user) => {
-        dispatch(success(user));
+      async (user) => {
+        await dispatch(success(user));
         history.push(from);
       },
-      (error) => {
-        dispatch(failure(error.toString()));
-        dispatch(alertActions.error(error.toString()));
+      async (error) => {
+        await dispatch(failure(error.toString()));
+        await dispatch(alertActions.error(error.toString()));
       }
     );
   };
@@ -58,7 +73,7 @@ function register(user) {
     userService.register(user).then(
       (user) => {
         dispatch(success());
-        history.push("/login");
+        //history.push("/login");
         dispatch(alertActions.success("Registration successful"));
       },
       (error) => {
@@ -79,83 +94,202 @@ function register(user) {
   }
 }
 
-function getAll() {
-  return (dispatch) => {
-    dispatch(request());
-
-    userService.getAll().then(
-      (users) => dispatch(success(users)),
-      (error) => dispatch(failure(error.toString()))
-    );
-  };
-
-  function request() {
-    return { type: userConstants.GETALL_REQUEST };
-  }
-  function success(users) {
-    return { type: userConstants.GETALL_SUCCESS, users };
-  }
-  function failure(error) {
-    return { type: userConstants.GETALL_FAILURE, error };
-  }
+function getEvents() {
+  return userService.getEvents();
 }
 
-function getEvents() {
-  let user = JSON.parse(localStorage.getItem("user"));
-  return userService.getEvents(user.username);
+function reqSettings() {
+  return userService.reqSettings();
+}
+
+function adminVerify() {
+  return userService.adminVerify();
+}
+
+function userVerify() {
+  return userService.userVerify();
+}
+
+function getVideos(page) {
+  return userService.getVideoData(page);
 }
 
 function runEvent(event) {
-  let user = JSON.parse(localStorage.getItem("user"));
-  return userService.runEvent(user.username, event);
+  return userService.runEvent(event);
 }
 
 function checkBalance(event) {
-  let user = JSON.parse(localStorage.getItem("user"));
-  return userService.checkBalance(user.username, event);
+  return userService.checkBalance(event);
 }
 
-function notifyListener() {
-  const socketProtocol = window.location.protocol === "https:" ? "wss:" : "ws:";
-  const echoSocketUrl = socketProtocol + `${config.apiUrl}/notify`;
-  const socket = new WebSocket(echoSocketUrl.replace("http:", ""));
-
-  console.log("Waiting for new notifications from server");
-  socket.onopen = function(event) {
-    console.log('CONNECTED');
-    socket.send("Client Connected")
-  };
-  
-  socket.onmessage = (event) => {
-    var eventInfo = event.data.split(" ");
-    console.log(eventInfo);
-    if (eventInfo[0] == "off") stopConfetti();
-    if(eventInfo[1] == "Confetti") startConfetti();
-  };
-
-  socket.onclose = function(event) {
-    console.log('LOST CONNECTION');
-  };
-}
-
-// prefixed function name with underscore because delete is a reserved word in javascript
-function _delete(id) {
+function resetPassword(password, newPassword, confirmPassword) {
+  var username = JSON.parse(localStorage.getItem("user")).username;
   return (dispatch) => {
-    dispatch(request(id));
+    dispatch(request({ username }));
+    if (confirmPassword != newPassword) {
+      dispatch(alertActions.error("Passwords do not match"));
+    } else {
+      userService.resetPassword(password, newPassword).then(
+        (response) => {
+          dispatch(success(response));
+          dispatch(alertActions.success(response.toString()));
+        },
+        (error) => {
+          dispatch(failure(error.toString()));
+          dispatch(alertActions.error(error.toString()));
+        }
+      );
+    }
+  };
 
-    userService.delete(id).then(
-      (user) => dispatch(success(id)),
-      (error) => dispatch(failure(id, error.toString()))
+  function request(user) {
+    return { type: userConstants.RESET_REQUEST, user };
+  }
+  function success(response) {
+    return { type: userConstants.RESET_SUCCESS, response };
+  }
+  function failure(error) {
+    return { type: userConstants.RESET_FAILURE, error };
+  }
+}
+
+function twitchAuth() {
+  const clientID = "2ycvvf2zsvwyvso2b8q9i9mjajs9yd";
+  //const user = JSON.parse(localStorage.getItem("user"));
+  const redirectLink =
+    "https://id.twitch.tv/oauth2/authorize?" +
+    "client_id=" +
+    clientID +
+    "&redirect_uri=" +
+    "http://localhost:8080" +
+    location.pathname +
+    "&response_type=token" +
+    "&scope=user:read:email%20user:read:subscriptions";
+  window.location.replace(redirectLink);
+}
+
+function twitchHandler() {
+  const queryString = window.location.hash.substr(1);
+  const urlParams = new URLSearchParams(queryString);
+  const accessCode = urlParams.get("access_token");
+  return (dispatch) => {
+    //dispatch(request({ username }));
+    userService.twitchHandler(accessCode).then(
+      (response) => {
+        dispatch(success(response));
+        dispatch(alertActions.success(response.toString()));
+      },
+      (error) => {
+        dispatch(failure(error.toString()));
+        dispatch(alertActions.error(error.toString()));
+      }
+    );
+  };
+  function request(user) {
+    return { type: userConstants.LOGIN_REQUEST, user };
+  }
+  function success(user) {
+    return { type: userConstants.LOGIN_SUCCESS, user };
+  }
+  function failure(error) {
+    return { type: userConstants.LOGIN_FAILURE, error };
+  }
+}
+
+function updateRank(callback) {
+  var username = JSON.parse(localStorage.getItem("user")).username;
+  return (dispatch) => {
+    dispatch(request({ username }));
+    userService.updateRank().then(
+      (response) => {
+        dispatch(alertActions.success("Your rank was updated successfully!"));
+        callback();
+      },
+      (error) => {
+        dispatch(failure(error.toString()));
+        dispatch(alertActions.error(error.toString()));
+      }
     );
   };
 
-  function request(id) {
-    return { type: userConstants.DELETE_REQUEST, id };
+  function request(user) {
+    return { type: userConstants.RANKUPDATE_REQUEST, user };
   }
-  function success(id) {
-    return { type: userConstants.DELETE_SUCCESS, id };
+  function success(response) {
+    return { type: userConstants.RANKUPDATE_SUCCESS, response };
   }
-  function failure(id, error) {
-    return { type: userConstants.DELETE_FAILURE, id, error };
+  function failure(error) {
+    return { type: userConstants.RANKUPDATE_FAILURE, error };
   }
+}
+
+function updateLocalUser(callBack) {
+  var username = JSON.parse(localStorage.getItem("user")).username;
+  return (dispatch) => {
+    dispatch(request({ username }));
+    if (localStorage.getItem("user")) {
+      userService.updateLocalUser().then(
+        (user) => {
+          dispatch(success(user));
+          if (callBack) callBack();
+        },
+        (error) => {
+          dispatch(failure(error.toString()));
+        }
+      );
+    } else console.log("No user logged in. Cannot Update.");
+  };
+
+  function request(user) {
+    return { type: userConstants.UPDATE_REQUEST, user };
+  }
+  function success(user) {
+    return { type: userConstants.UPDATE_SUCCESS, user };
+  }
+  function failure(error) {
+    return { type: userConstants.UPDATE_FAILURE, error };
+  }
+}
+
+
+function notifyListener() {
+  //const socketProtocol = window.location.protocol === "https:" ? "wss:" : "ws:";
+  const echoSocketUrl = `${config.apiUrl}/notify`;
+  const socket = socketIOClient(echoSocketUrl);
+
+  console.log("Waiting for new notifications from server");
+
+  socket.on("connect", () => {
+    console.log("CONNECTED");
+  });
+
+  socket.on("event", (eventInfo) => {
+    console.log(eventInfo);
+    if (eventInfo.name != "off") {
+      switch (eventInfo.event) {
+        case "Confetti":
+          startConfetti();
+          break;
+        case "Fire":
+          setFire(true);
+          break;
+        default:
+          break;
+      }
+      tickerText(eventInfo.name, eventInfo.event); //send event info to ticker box
+    }
+  });
+
+  socket.on("off", () => {
+    stopConfetti();
+    setFire(false);
+    //update user in case they were the one to buy the event
+    //and we need the new juice balance
+    store.dispatch(updateLocalUser());
+    tickerText(null, null); //set ticker box to default after events end
+  });
+
+  socket.on("disconnect", () => {
+    console.log("LOST CONNECTION");
+  });
 }

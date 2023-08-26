@@ -1,13 +1,4 @@
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 # JuiceBeam Front End
-=======
-# JuiceBeam-Front
->>>>>>> Stashed changes
-=======
-# JuiceBeam-Front
->>>>>>> Stashed changes
 
-Created With React Hooks + Redux - User Registration and Login Tutorial & Example
+Welcome to the JuiceBeam project. This website was meant to showcase what I've learned about web development up to this point.
 
-For documentation and live demo see https://jasonwatmore.com/post/2020/03/02/react-hooks-redux-user-registration-and-login-tutorial-example

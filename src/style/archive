@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JuiceBeam</title>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+    <script src="https://player.twitch.tv/js/embed/v1.js"></script>
+    <script src="/src/_actions/autosize.js"></script>
+    <link rel="stylesheet" href="/style/post-1540af.css" />
+    <link rel="stylesheet" href="/style/widget-nav-menu.min.css"></link>
+    <link rel="stylesheet" href="/animations/animations.css"></link>
+    <style>
+        
+        .tank_bottom {
+  height: 940px !important;
+  width: 660px;
+  position: absolute;
+  z-index: 3;
+  top: -100px;
+  margin: 0px -40px 0px 0px;
+  pointer-events: none;
+  right: 0px;
+  background-image: "../src/images/Tank_Ends-1.webp";
+}
+body {
+  background-image: url("../src/images/green_slime.jpg");
+  background-repeat: repeat;
+}
+    </style>
+<script defer src="/main.2a53c4ec9c71aa14c4c4.min.js"></script></head>
+
+<body>
+    <div id="app"></div>
+    
+    </div>
+</body>
+
+</html>

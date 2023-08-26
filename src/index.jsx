@@ -1,17 +1,23 @@
-import React from 'react';
-import { render } from 'react-dom';
-import { Provider } from 'react-redux';
+import React, { lazy, Suspense } from "react";
+import { render } from "react-dom";
+import { Provider } from "react-redux";
+import { Switch, Router, Route, Redirect } from "react-router-dom";
+import { store, history } from "./_helpers";
 
-import { store } from './_helpers';
-import { App } from './App';
+const UserUI = lazy(() => import("./UserUI/App/App"));
+const AdminUI = lazy(() => import("./AdminUI/App/App"));
 
-// setup fake backend
-//import { configureFakeBackend } from './_helpers';
-//configureFakeBackend();
 
 render(
-    <Provider store={store}>
-        <App />
-    </Provider>,
-    document.getElementById('app')
+  <Provider store={store}>
+    <Suspense fallback={<div>Loading...</div>}>
+      <Router history={history}>
+        <Switch>
+          <Route path="/admin" component={AdminUI} />
+          <Route path="/*" component={UserUI} />
+        </Switch>
+      </Router>
+    </Suspense>
+  </Provider>,
+  document.getElementById("app")
 );

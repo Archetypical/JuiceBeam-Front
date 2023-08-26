@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { Settings } from "../../src/AccountPage/Pages/Settings";
 
 function CogIcon() {
   return (
@@ -45,19 +46,33 @@ function ChevronIcon() {
   );
 }
 
-function BurgerIcon() {
+function BurgerIcon(settings) {
   const [isActive, setActive] = useState(false);
 
   function toggleActive(){
+    settings.onClick();
     setActive(!isActive);
   }
+
+  function correctIcon(){
+    if(document.querySelector(".nav-menu-dropdown_container") == null){
+      setActive(false);
+    }
+    else{
+      setActive(true);
+    }
+  }
+
+  useEffect(() => {
+    correctIcon();
+  }, [isActive]);
 
   return (
     <svg
       className={isActive ? "ham hamRotate ham1 active mobile-s" : "ham hamRotate ham1 mobile-s"}
       viewBox="0 0 100 100"
       width="80"
-      onClick={toggleActive}
+      onClick={() => toggleActive()}
     >
       <path
         className="line top"

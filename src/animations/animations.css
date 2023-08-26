@@ -1,0 +1,1403 @@
+
+@keyframes expandRight {
+    0%{
+        width: 0;
+    }
+    100%{
+        width: 200px;
+    }
+}
+
+@keyframes retractRight {
+    0%{
+        width: 200px;
+    }
+    100%{
+        width: 0px;
+    }
+}
+
+@keyframes bounce {
+    20%,
+    53%,
+    80%,
+    from,
+    to {
+        animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+        transform: translate3d(0, 0, 0);
+    }
+    40%,
+    43% {
+        animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+        transform: translate3d(0, -30px, 0);
+    }
+    70% {
+        animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+        transform: translate3d(0, -15px, 0);
+    }
+    90% {
+        transform: translate3d(0, -4px, 0);
+    }
+}
+
+.bounce {
+    animation-name: bounce;
+    transform-origin: center bottom;
+}
+
+@keyframes flash {
+    50%,
+    from,
+    to {
+        opacity: 1;
+    }
+    25%,
+    75% {
+        opacity: 0;
+    }
+}
+
+.flash {
+    animation-name: flash;
+}
+
+@keyframes pulse {
+    from,
+    to {
+        transform: scale3d(1, 1, 1);
+    }
+    50% {
+        transform: scale3d(1.05, 1.05, 1.05);
+    }
+}
+
+.pulse {
+    animation-name: pulse;
+}
+
+@keyframes rubberBand {
+    from,
+    to {
+        transform: scale3d(1, 1, 1);
+    }
+    30% {
+        transform: scale3d(1.25, 0.75, 1);
+    }
+    40% {
+        transform: scale3d(0.75, 1.25, 1);
+    }
+    50% {
+        transform: scale3d(1.15, 0.85, 1);
+    }
+    65% {
+        transform: scale3d(0.95, 1.05, 1);
+    }
+    75% {
+        transform: scale3d(1.05, 0.95, 1);
+    }
+}
+
+.rubberBand {
+    animation-name: rubberBand;
+}
+
+@keyframes shake {
+    from,
+    to {
+        transform: translate3d(0, 0, 0);
+    }
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
+        transform: translate3d(-10px, 0, 0);
+    }
+    20%,
+    40%,
+    60%,
+    80% {
+        transform: translate3d(10px, 0, 0);
+    }
+}
+
+.shake {
+    animation-name: shake;
+}
+
+@keyframes headShake {
+    0% {
+        transform: translateX(0);
+    }
+    6.5% {
+        transform: translateX(-6px) rotateY(-9deg);
+    }
+    18.5% {
+        transform: translateX(5px) rotateY(7deg);
+    }
+    31.5% {
+        transform: translateX(-3px) rotateY(-5deg);
+    }
+    43.5% {
+        transform: translateX(2px) rotateY(3deg);
+    }
+    50% {
+        transform: translateX(0);
+    }
+}
+
+.headShake {
+    animation-timing-function: ease-in-out;
+    animation-name: headShake;
+}
+
+@keyframes swing {
+    20% {
+        transform: rotate3d(0, 0, 1, 15deg);
+    }
+    40% {
+        transform: rotate3d(0, 0, 1, -10deg);
+    }
+    60% {
+        transform: rotate3d(0, 0, 1, 5deg);
+    }
+    80% {
+        transform: rotate3d(0, 0, 1, -5deg);
+    }
+    to {
+        transform: rotate3d(0, 0, 1, 0deg);
+    }
+}
+
+.swing {
+    transform-origin: top center;
+    animation-name: swing;
+}
+
+@keyframes tada {
+    from {
+        
+    }
+    to {
+        transform: scale3d(1, 1, 1);
+    }
+    10%,
+    20% {
+        transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -3deg);
+    }
+    30%,
+    50%,
+    70%,
+    90% {
+        transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg);
+    }
+    40%,
+    60%,
+    80% {
+        transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg);
+    }
+}
+
+.tada {
+    animation-name: tada;
+}
+
+@keyframes wobble {
+    from,
+    to {
+        transform: none;
+    }
+    15% {
+        transform: translate3d(-25%, 0, 0) rotate3d(0, 0, 1, -5deg);
+    }
+    30% {
+        transform: translate3d(20%, 0, 0) rotate3d(0, 0, 1, 3deg);
+    }
+    45% {
+        transform: translate3d(-15%, 0, 0) rotate3d(0, 0, 1, -3deg);
+    }
+    60% {
+        transform: translate3d(10%, 0, 0) rotate3d(0, 0, 1, 2deg);
+    }
+    75% {
+        transform: translate3d(-5%, 0, 0) rotate3d(0, 0, 1, -1deg);
+    }
+}
+
+.wobble {
+    animation-name: wobble;
+}
+
+@keyframes jello {
+    11.1%,
+    from,
+    to {
+        transform: none;
+    }
+    22.2% {
+        transform: skewX(-12.5deg) skewY(-12.5deg);
+    }
+    33.3% {
+        transform: skewX(6.25deg) skewY(6.25deg);
+    }
+    44.4% {
+        transform: skewX(-3.125deg) skewY(-3.125deg);
+    }
+    55.5% {
+        transform: skewX(1.5625deg) skewY(1.5625deg);
+    }
+    66.6% {
+        transform: skewX(-0.78125deg) skewY(-0.78125deg);
+    }
+    77.7% {
+        transform: skewX(0.390625deg) skewY(0.390625deg);
+    }
+    88.8% {
+        transform: skewX(-0.1953125deg) skewY(-0.1953125deg);
+    }
+}
+
+.jello {
+    animation-name: jello;
+    transform-origin: center;
+}
+
+@keyframes bounceIn {
+    20%,
+    40%,
+    60%,
+    80%,
+    from,
+    to {
+        animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+    0% {
+        opacity: 0;
+        transform: scale3d(0.3, 0.3, 0.3);
+    }
+    20% {
+        transform: scale3d(1.1, 1.1, 1.1);
+    }
+    40% {
+        transform: scale3d(0.9, 0.9, 0.9);
+    }
+    60% {
+        opacity: 1;
+        transform: scale3d(1.03, 1.03, 1.03);
+    }
+    80% {
+        transform: scale3d(0.97, 0.97, 0.97);
+    }
+    to {
+        opacity: 1;
+        transform: scale3d(1, 1, 1);
+    }
+}
+
+.bounceIn {
+    animation-name: bounceIn;
+}
+
+@keyframes bounceInDown {
+    60%,
+    75%,
+    90%,
+    from,
+    to {
+        animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+    0% {
+        opacity: 0;
+        transform: translate3d(0, -3000px, 0);
+    }
+    60% {
+        opacity: 1;
+        transform: translate3d(0, 25px, 0);
+    }
+    75% {
+        transform: translate3d(0, -10px, 0);
+    }
+    90% {
+        transform: translate3d(0, 5px, 0);
+    }
+    to {
+        transform: none;
+    }
+}
+
+.bounceInDown {
+    animation-name: bounceInDown;
+}
+
+@keyframes bounceInLeft {
+    60%,
+    75%,
+    90%,
+    from,
+    to {
+        animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+    0% {
+        opacity: 0;
+        transform: translate3d(-3000px, 0, 0);
+    }
+    60% {
+        opacity: 1;
+        transform: translate3d(25px, 0, 0);
+    }
+    75% {
+        transform: translate3d(-10px, 0, 0);
+    }
+    90% {
+        transform: translate3d(5px, 0, 0);
+    }
+    to {
+        transform: none;
+    }
+}
+
+.bounceInLeft {
+    animation-name: bounceInLeft;
+}
+
+@keyframes bounceInRight {
+    60%,
+    75%,
+    90%,
+    from,
+    to {
+        animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+    from {
+        opacity: 0;
+        transform: translate3d(3000px, 0, 0);
+    }
+    60% {
+        opacity: 1;
+        transform: translate3d(-25px, 0, 0);
+    }
+    75% {
+        transform: translate3d(10px, 0, 0);
+    }
+    90% {
+        transform: translate3d(-5px, 0, 0);
+    }
+    to {
+        transform: none;
+    }
+}
+
+.bounceInRight {
+    animation-name: bounceInRight;
+}
+
+@keyframes bounceInUp {
+    60%,
+    75%,
+    90%,
+    from,
+    to {
+        animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    }
+    from {
+        opacity: 0;
+        transform: translate3d(0, 3000px, 0);
+    }
+    60% {
+        opacity: 1;
+        transform: translate3d(0, -20px, 0);
+    }
+    75% {
+        transform: translate3d(0, 10px, 0);
+    }
+    90% {
+        transform: translate3d(0, -5px, 0);
+    }
+    to {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+.bounceInUp {
+    animation-name: bounceInUp;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.fadeIn {
+    animation-name: fadeIn;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translate3d(0, -100%, 0);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+.fadeInDown {
+    animation-name: fadeInDown;
+}
+
+@keyframes fadeOutDown {
+    from {
+        opacity: 1;
+        transform: rotate3d(0, 0, 0, 180deg);
+    }
+    to {
+        opacity: 0;
+        transform: rotate3d(0, 1, 0, 180deg);
+    }
+}
+
+.fadeOutDown {
+    animation-name: fadeOutDown;
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translate3d(-100%, 0, 0);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+.fadeInLeft {
+    animation-name: fadeInLeft;
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translate3d(100%, 0, 0);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+.fadeInRight {
+    animation-name: fadeInRight;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 100%, 0);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+.fadeInUp {
+    animation-name: fadeInUp;
+}
+
+@keyframes lightSpeedIn {
+    from {
+        transform: translate3d(100%, 0, 0) skewX(-30deg);
+        opacity: 0;
+    }
+    60% {
+        transform: skewX(20deg);
+        opacity: 1;
+    }
+    80% {
+        transform: skewX(-5deg);
+        opacity: 1;
+    }
+    to {
+        transform: none;
+        opacity: 1;
+    }
+}
+
+.lightSpeedIn {
+    animation-name: lightSpeedIn;
+    animation-timing-function: ease-out;
+}
+
+@keyframes rotateIn {
+    from {
+        transform-origin: center;
+        transform: rotate3d(0, 0, 1, -200deg);
+        opacity: 0;
+    }
+    to {
+        transform-origin: center;
+        transform: none;
+        opacity: 1;
+    }
+}
+
+.rotateIn {
+    animation-name: rotateIn;
+}
+
+@keyframes rotateInDownLeft {
+    from {
+        transform-origin: left bottom;
+        transform: rotate3d(0, 0, 1, -45deg);
+        opacity: 0;
+    }
+    to {
+        transform-origin: left bottom;
+        transform: none;
+        opacity: 1;
+    }
+}
+
+.rotateInDownLeft {
+    animation-name: rotateInDownLeft;
+}
+
+@keyframes rotateInDownRight {
+    from {
+        transform-origin: right bottom;
+        transform: rotate3d(0, 0, 1, 45deg);
+        opacity: 0;
+    }
+    to {
+        transform-origin: right bottom;
+        transform: none;
+        opacity: 1;
+    }
+}
+
+.rotateInDownRight {
+    animation-name: rotateInDownRight;
+}
+
+@keyframes rotateInUpLeft {
+    from {
+        transform-origin: left bottom;
+        transform: rotate3d(0, 0, 1, 45deg);
+        opacity: 0;
+    }
+    to {
+        transform-origin: left bottom;
+        transform: none;
+        opacity: 1;
+    }
+}
+
+.rotateInUpLeft {
+    animation-name: rotateInUpLeft;
+}
+
+@keyframes rotateInUpRight {
+    from {
+        transform-origin: right bottom;
+        transform: rotate3d(0, 0, 1, -90deg);
+        opacity: 0;
+    }
+    to {
+        transform-origin: right bottom;
+        transform: none;
+        opacity: 1;
+    }
+}
+
+.rotateInUpRight {
+    animation-name: rotateInUpRight;
+}
+
+@keyframes rollIn {
+    from {
+        opacity: 0;
+        transform: translate3d(-100%, 0, 0) rotate3d(0, 0, 1, -120deg);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+.rollIn {
+    animation-name: rollIn;
+}
+
+@keyframes zoomIn {
+    from {
+        opacity: 0;
+        transform: scale3d(0.3, 0.3, 0.3);
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+.zoomIn {
+    animation-name: zoomIn;
+}
+
+@keyframes zoomInDown {
+    from {
+        opacity: 0;
+        transform: scale3d(0.1, 0.1, 0.1) translate3d(0, -1000px, 0);
+        animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    }
+    60% {
+        opacity: 1;
+        transform: scale3d(0.475, 0.475, 0.475) translate3d(0, 60px, 0);
+        animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
+    }
+}
+
+.zoomInDown {
+    animation-name: zoomInDown;
+}
+
+@keyframes zoomInLeft {
+    from {
+        opacity: 0;
+        transform: scale3d(0.1, 0.1, 0.1) translate3d(-1000px, 0, 0);
+        animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    }
+    60% {
+        opacity: 1;
+        transform: scale3d(0.475, 0.475, 0.475) translate3d(10px, 0, 0);
+        animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
+    }
+}
+
+.zoomInLeft {
+    animation-name: zoomInLeft;
+}
+
+@keyframes zoomInRight {
+    from {
+        opacity: 0;
+        transform: scale3d(0.1, 0.1, 0.1) translate3d(1000px, 0, 0);
+        animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    }
+    60% {
+        opacity: 1;
+        transform: scale3d(0.475, 0.475, 0.475) translate3d(-10px, 0, 0);
+        animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
+    }
+}
+
+.zoomInRight {
+    animation-name: zoomInRight;
+}
+
+@keyframes zoomInUp {
+    from {
+        opacity: 0;
+        transform: scale3d(0.1, 0.1, 0.1) translate3d(0, 1000px, 0);
+        animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    }
+    60% {
+        opacity: 1;
+        transform: scale3d(0.475, 0.475, 0.475) translate3d(0, -60px, 0);
+        animation-timing-function: cubic-bezier(0.175, 0.885, 0.32, 1);
+    }
+}
+
+.zoomInUp {
+    animation-name: zoomInUp;
+}
+
+@keyframes slideInDown {
+    from {
+        transform: translate3d(0, -150%, 0);
+        
+    }
+    to {
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+    }
+}
+
+.slideInDown {
+    animation: slideInDown;
+}
+.fast{
+    animation-duration: .7s;
+    animation-fill-mode: forwards;
+}
+
+.normal{
+    animation-duration: 1.5s;
+}
+.slow{
+    animation-duration: 2s;
+}
+
+.first-load{
+    animation-delay: .5s;
+    animation-fill-mode: forwards;
+}
+
+.second-load{
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+}
+.third-load{
+    animation-delay: 1.3s;
+    animation-fill-mode: forwards;
+}
+.fourth-load{
+    animation-delay: 1.9s;
+    animation-fill-mode: forwards;
+}
+
+.first {
+    transform: translate3d(-100%, 0, 0);
+    animation-delay: .2s;
+    animation-duration: .3s;
+    animation-fill-mode: forwards;
+}
+
+.second {
+    transform: translate3d(-100%, 0, 0);
+    animation-delay: .3s;
+    animation-duration: .3s;
+    animation-fill-mode: forwards;
+}
+
+.third {
+    transform: translate3d(-100%, 0, 0);
+    animation-delay: .6s;
+    animation-duration: .3s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes slideInLeft {
+
+    from {
+        transform: translate3d(-100%, 0, 0);
+        visibility: none;
+    }
+    to {
+        transform: translate3d(0, 0, 0);
+        visibility: visible;
+    }
+}
+
+.slideInLeft {
+    animation-name: slideInLeft;
+}
+
+@keyframes slideOutLeft {
+
+    from {
+        transform: translate3d(0, 0, 0);
+        visibility: none;
+    }
+    to {
+        transform: translate3d(100%, 0, 0);
+        visibility: visible;
+    }
+}
+
+.slideOutLeft {
+    animation-name: slideOutLeft;
+}
+
+
+@keyframes slideInRight {
+    from {
+        transform: translate3d(100%, 0, 0);
+        visibility: visible;
+    }
+    to {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+.slideInRight {
+    animation-name: slideInRight;
+}
+
+@keyframes slideInUp {
+    from {
+        transform: translate3d(0, 100%, 0);
+        visibility: visible;
+    }
+    to {
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+.slideInUp {
+    animation-name: slideInUp;
+}
+
+.juicebeam-animation-grow {
+    transition-duration: 0.3s;
+    transition-property: transform;
+}
+
+.juicebeam-animation-grow:active,
+.juicebeam-animation-grow:focus,
+.juicebeam-animation-grow:hover {
+    transform: scale(1.1);
+}
+
+.juicebeam-animation-shrink {
+    transition-duration: 0.3s;
+    transition-property: transform;
+}
+
+.juicebeam-animation-shrink:active,
+.juicebeam-animation-shrink:focus,
+.juicebeam-animation-shrink:hover {
+    transform: scale(0.9);
+}
+
+@keyframes juicebeam-animation-pulse {
+    25% {
+        transform: scale(1.1);
+    }
+    75% {
+        transform: scale(0.9);
+    }
+}
+
+.juicebeam-animation-pulse:active,
+.juicebeam-animation-pulse:focus,
+.juicebeam-animation-pulse:hover {
+    animation-name: juicebeam-animation-pulse;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+@keyframes juicebeam-animation-pulse-grow {
+    to {
+        transform: scale(1.1);
+    }
+}
+
+.juicebeam-animation-pulse-grow:active,
+.juicebeam-animation-pulse-grow:focus,
+.juicebeam-animation-pulse-grow:hover {
+    animation-name: juicebeam-animation-pulse-grow;
+    animation-duration: 0.3s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes juicebeam-animation-pulse-shrink {
+    to {
+        transform: scale(0.9);
+    }
+}
+
+.juicebeam-animation-pulse-shrink:active,
+.juicebeam-animation-pulse-shrink:focus,
+.juicebeam-animation-pulse-shrink:hover {
+    animation-name: juicebeam-animation-pulse-shrink;
+    animation-duration: 0.3s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes juicebeam-animation-push {
+    50% {
+        transform: scale(0.8);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.juicebeam-animation-push:active,
+.juicebeam-animation-push:focus,
+.juicebeam-animation-push:hover {
+    animation-name: juicebeam-animation-push;
+    animation-duration: 0.3s;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+}
+
+@keyframes juicebeam-animation-pop {
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+.juicebeam-animation-pop:active,
+.juicebeam-animation-pop:focus,
+.juicebeam-animation-pop:hover {
+    animation-name: juicebeam-animation-pop;
+    animation-duration: 0.3s;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+}
+
+.juicebeam-animation-bounce-in {
+    transition-duration: 0.5s;
+}
+
+.juicebeam-animation-bounce-in:active,
+.juicebeam-animation-bounce-in:focus,
+.juicebeam-animation-bounce-in:hover {
+    transform: scale(1.2);
+    transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
+}
+
+.juicebeam-animation-bounce-out {
+    transition-duration: 0.5s;
+}
+
+.juicebeam-animation-bounce-out:active,
+.juicebeam-animation-bounce-out:focus,
+.juicebeam-animation-bounce-out:hover {
+    transform: scale(0.8);
+    transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
+}
+
+.juicebeam-animation-rotate {
+    transition-duration: 0.3s;
+    transition-property: transform;
+}
+
+.juicebeam-animation-rotate:active,
+.juicebeam-animation-rotate:focus,
+.juicebeam-animation-rotate:hover {
+    transform: rotate(4deg);
+}
+
+.juicebeam-animation-grow-rotate {
+    transition-duration: 0.3s;
+    transition-property: transform;
+}
+
+.juicebeam-animation-grow-rotate:active,
+.juicebeam-animation-grow-rotate:focus,
+.juicebeam-animation-grow-rotate:hover {
+    transform: scale(1.1) rotate(4deg);
+}
+
+.juicebeam-animation-float {
+    transition-duration: 0.3s;
+    transition-property: transform;
+    transition-timing-function: ease-out;
+}
+
+.juicebeam-animation-float:active,
+.juicebeam-animation-float:focus,
+.juicebeam-animation-float:hover {
+    transform: translateY(-8px);
+}
+
+.juicebeam-animation-sink {
+    transition-duration: 0.3s;
+    transition-property: transform;
+    transition-timing-function: ease-out;
+}
+
+.juicebeam-animation-sink:active,
+.juicebeam-animation-sink:focus,
+.juicebeam-animation-sink:hover {
+    transform: translateY(8px);
+}
+
+@keyframes juicebeam-animation-bob {
+    0% {
+        transform: translateY(-8px);
+    }
+    50% {
+        transform: translateY(-4px);
+    }
+    100% {
+        transform: translateY(-8px);
+    }
+}
+
+@keyframes juicebeam-animation-bob-float {
+    100% {
+        transform: translateY(-8px);
+    }
+}
+
+.juicebeam-animation-bob:active,
+.juicebeam-animation-bob:focus,
+.juicebeam-animation-bob:hover {
+    animation-name: juicebeam-animation-bob-float, juicebeam-animation-bob;
+    animation-duration: 0.3s, 1.5s;
+    animation-delay: 0s, 0.3s;
+    animation-timing-function: ease-out, ease-in-out;
+    animation-iteration-count: 1, infinite;
+    animation-fill-mode: forwards;
+    animation-direction: normal, alternate;
+}
+
+@keyframes juicebeam-animation-hang {
+    0% {
+        transform: translateY(8px);
+    }
+    50% {
+        transform: translateY(4px);
+    }
+    100% {
+        transform: translateY(8px);
+    }
+}
+
+@keyframes juicebeam-animation-hang-sink {
+    100% {
+        transform: translateY(8px);
+    }
+}
+
+.juicebeam-animation-hang:active,
+.juicebeam-animation-hang:focus,
+.juicebeam-animation-hang:hover {
+    animation-name: juicebeam-animation-hang-sink, juicebeam-animation-hang;
+    animation-duration: 0.3s, 1.5s;
+    animation-delay: 0s, 0.3s;
+    animation-timing-function: ease-out, ease-in-out;
+    animation-iteration-count: 1, infinite;
+    animation-fill-mode: forwards;
+    animation-direction: normal, alternate;
+}
+
+.juicebeam-animation-skew {
+    transition-duration: 0.3s;
+    transition-property: transform;
+}
+
+.juicebeam-animation-skew:active,
+.juicebeam-animation-skew:focus,
+.juicebeam-animation-skew:hover {
+    transform: skew(-10deg);
+}
+
+.juicebeam-animation-skew-forward {
+    transition-duration: 0.3s;
+    transition-property: transform;
+    transform-origin: 0 100%;
+}
+
+.juicebeam-animation-skew-forward:active,
+.juicebeam-animation-skew-forward:focus,
+.juicebeam-animation-skew-forward:hover {
+    transform: skew(-10deg);
+}
+
+.juicebeam-animation-skew-backward {
+    transition-duration: 0.3s;
+    transition-property: transform;
+    transform-origin: 0 100%;
+}
+
+.juicebeam-animation-skew-backward:active,
+.juicebeam-animation-skew-backward:focus,
+.juicebeam-animation-skew-backward:hover {
+    transform: skew(10deg);
+}
+
+@keyframes juicebeam-animation-wobble-vertical {
+    16.65% {
+        transform: translateY(8px);
+    }
+    33.3% {
+        transform: translateY(-6px);
+    }
+    49.95% {
+        transform: translateY(4px);
+    }
+    66.6% {
+        transform: translateY(-2px);
+    }
+    83.25% {
+        transform: translateY(1px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.juicebeam-animation-wobble-vertical:active,
+.juicebeam-animation-wobble-vertical:focus,
+.juicebeam-animation-wobble-vertical:hover {
+    animation-name: juicebeam-animation-wobble-vertical;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1;
+}
+
+@keyframes juicebeam-animation-wobble-horizontal {
+    16.65% {
+        transform: translateX(8px);
+    }
+    33.3% {
+        transform: translateX(-6px);
+    }
+    49.95% {
+        transform: translateX(4px);
+    }
+    66.6% {
+        transform: translateX(-2px);
+    }
+    83.25% {
+        transform: translateX(1px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.juicebeam-animation-wobble-horizontal:active,
+.juicebeam-animation-wobble-horizontal:focus,
+.juicebeam-animation-wobble-horizontal:hover {
+    animation-name: juicebeam-animation-wobble-horizontal;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1;
+}
+
+@keyframes juicebeam-animation-wobble-to-bottom-right {
+    16.65% {
+        transform: translate(8px, 8px);
+    }
+    33.3% {
+        transform: translate(-6px, -6px);
+    }
+    49.95% {
+        transform: translate(4px, 4px);
+    }
+    66.6% {
+        transform: translate(-2px, -2px);
+    }
+    83.25% {
+        transform: translate(1px, 1px);
+    }
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+.juicebeam-animation-wobble-to-bottom-right:active,
+.juicebeam-animation-wobble-to-bottom-right:focus,
+.juicebeam-animation-wobble-to-bottom-right:hover {
+    animation-name: juicebeam-animation-wobble-to-bottom-right;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1;
+}
+
+@keyframes juicebeam-animation-wobble-to-top-right {
+    16.65% {
+        transform: translate(8px, -8px);
+    }
+    33.3% {
+        transform: translate(-6px, 6px);
+    }
+    49.95% {
+        transform: translate(4px, -4px);
+    }
+    66.6% {
+        transform: translate(-2px, 2px);
+    }
+    83.25% {
+        transform: translate(1px, -1px);
+    }
+    100% {
+        transform: translate(0, 0);
+    }
+}
+
+.juicebeam-animation-wobble-to-top-right:active,
+.juicebeam-animation-wobble-to-top-right:focus,
+.juicebeam-animation-wobble-to-top-right:hover {
+    animation-name: juicebeam-animation-wobble-to-top-right;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1;
+}
+
+@keyframes juicebeam-animation-wobble-top {
+    16.65% {
+        transform: skew(-12deg);
+    }
+    33.3% {
+        transform: skew(10deg);
+    }
+    49.95% {
+        transform: skew(-6deg);
+    }
+    66.6% {
+        transform: skew(4deg);
+    }
+    83.25% {
+        transform: skew(-2deg);
+    }
+    100% {
+        transform: skew(0);
+    }
+}
+
+.juicebeam-animation-wobble-top {
+    transform-origin: 0 100%;
+}
+
+.juicebeam-animation-wobble-top:active,
+.juicebeam-animation-wobble-top:focus,
+.juicebeam-animation-wobble-top:hover {
+    animation-name: juicebeam-animation-wobble-top;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1;
+}
+
+@keyframes juicebeam-animation-wobble-bottom {
+    16.65% {
+        transform: skew(-12deg);
+    }
+    33.3% {
+        transform: skew(10deg);
+    }
+    49.95% {
+        transform: skew(-6deg);
+    }
+    66.6% {
+        transform: skew(4deg);
+    }
+    83.25% {
+        transform: skew(-2deg);
+    }
+    100% {
+        transform: skew(0);
+    }
+}
+
+.juicebeam-animation-wobble-bottom {
+    transform-origin: 100% 0;
+}
+
+.juicebeam-animation-wobble-bottom:active,
+.juicebeam-animation-wobble-bottom:focus,
+.juicebeam-animation-wobble-bottom:hover {
+    animation-name: juicebeam-animation-wobble-bottom;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1;
+}
+
+@keyframes juicebeam-animation-wobble-skew {
+    16.65% {
+        transform: skew(-12deg);
+    }
+    33.3% {
+        transform: skew(10deg);
+    }
+    49.95% {
+        transform: skew(-6deg);
+    }
+    66.6% {
+        transform: skew(4deg);
+    }
+    83.25% {
+        transform: skew(-2deg);
+    }
+    100% {
+        transform: skew(0);
+    }
+}
+
+.juicebeam-animation-wobble-skew:active,
+.juicebeam-animation-wobble-skew:focus,
+.juicebeam-animation-wobble-skew:hover {
+    animation-name: juicebeam-animation-wobble-skew;
+    animation-duration: 1s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1;
+}
+
+@keyframes juicebeam-animation-buzz {
+    50% {
+        transform: translateX(3px) rotate(2deg);
+    }
+    100% {
+        transform: translateX(-3px) rotate(-2deg);
+    }
+}
+
+.jelly {
+    animation: jelly 0.6s ease;
+}
+
+@keyframes jelly {
+    from { transform: scale(1, 1); }
+    30% { transform: scale(1.25, 0.75); }
+    40% { transform: scale(0.75, 1.25); }
+    50% { transform: scale(1.15, 0.85); }
+    65% { transform: scale(0.95, 1.05); }
+    75% { transform: scale(1.05, 0.95); }
+    to { transform: scale(1, 1); }
+  }
+
+.juicebeam-animation-buzz:active,
+.juicebeam-animation-buzz:focus,
+.juicebeam-animation-buzz:hover {
+    animation-name: juicebeam-animation-buzz;
+    animation-duration: 0.15s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+@keyframes juicebeam-animation-buzz-out {
+    10% {
+        transform: translateX(3px) rotate(2deg);
+    }
+    20% {
+        transform: translateX(-3px) rotate(-2deg);
+    }
+    30% {
+        transform: translateX(3px) rotate(2deg);
+    }
+    40% {
+        transform: translateX(-3px) rotate(-2deg);
+    }
+    50% {
+        transform: translateX(2px) rotate(1deg);
+    }
+    60% {
+        transform: translateX(-2px) rotate(-1deg);
+    }
+    70% {
+        transform: translateX(2px) rotate(1deg);
+    }
+    80% {
+        transform: translateX(-2px) rotate(-1deg);
+    }
+    90% {
+        transform: translateX(1px) rotate(0);
+    }
+    100% {
+        transform: translateX(-1px) rotate(0);
+    }
+}
+
+.juicebeam-animation-buzz-out:active,
+.juicebeam-animation-buzz-out:focus,
+.juicebeam-animation-buzz-out:hover {
+    animation-name: juicebeam-animation-buzz-out;
+    animation-duration: 0.75s;
+    animation-timing-function: linear;
+    animation-iteration-count: 1;
+}
