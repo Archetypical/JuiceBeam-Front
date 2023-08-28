@@ -30,6 +30,7 @@ build/Release
 node_modules
 jspm_packages
 typings
+dist
 
 # Optional npm cache directory
 .npm
@@ -38,4 +39,3 @@ typings
 .node_repl_history
 
 # Compiled App
-dist
